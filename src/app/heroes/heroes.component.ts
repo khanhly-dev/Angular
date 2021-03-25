@@ -9,7 +9,7 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  
+
   heroes: Hero[] = [];
 
   // selectedHero?: Hero;
@@ -27,6 +27,25 @@ export class HeroesComponent implements OnInit {
       .subscribe(heroes => this.heroes = heroes);
   }
 
+  //add 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) {
+      return;
+    }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      })
+  }
+
+
+  //delete
+  delete(hero:Hero):void
+  {
+    this.heroes = this.heroes.filter(h=>h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
+  }
   //sync
   // getHeroes() : void {
   //   this.heroes = this.heroService.getHeroes();

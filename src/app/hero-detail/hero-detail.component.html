@@ -3,7 +3,10 @@
   <div><span>id: </span>{{hero.id}}</div>
   <div>
     <label for="hero-name">Hero name: </label>
+    <!-- binding 2 way  -->
     <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
   </div>
   <button (click)="goBack()">go back</button>
 </div>
+
+<button (click)="save()" >Save</button>
